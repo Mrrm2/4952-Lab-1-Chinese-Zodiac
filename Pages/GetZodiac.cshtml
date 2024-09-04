@@ -1,0 +1,32 @@
+﻿@page
+@model Zodiac.Pages.GetZodiacModel  
+@{
+
+}
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Year" class="control-label">Year:</label>
+		<input asp-for="Year" class="form-control" />
+        <br>
+        <button type="submit" class="btn btn-primary">Get Zodiac</button>
+        <a asp-action="Index" class="btn btn-success">Clear</a>	
+        @if (!Model.IsError && Model.Year != 0)
+        {
+            <div class="alert alert-success" role="alert">
+                <p>
+                    @Model.Message <b>@Model.Zodiac</b>
+                </p>
+                <img src="@Model.Image" alt="">
+                
+            </div>
+        } else if (Model.Year != 0)
+        {
+            <div class="alert alert-danger" role="alert">
+                @Model.Message
+            </div>
+        }
+    </div>
+
+</form>
+
